@@ -14,8 +14,13 @@ public class TestKlass {
 
         try {
             doc = Jsoup.connect("http://www.ilmateenistus.ee/ilma_andmed/xml/forecast.php").get();
+            System.out.println("kodeering "+doc.charset());
+
             kohad = doc.select("forecast>night>place>name").text();
             tempMin=doc.select("forecast>night>place>tempmin").text();
+
+            //System.out.println("Siin "+  new String (kohad.getBytes( "UTF-8" )));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
